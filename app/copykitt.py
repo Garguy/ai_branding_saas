@@ -4,7 +4,7 @@ from typing import List
 
 from openai import OpenAI
 
-OPENAI_API_KEY = "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"
+
 MAX_INPUT_LENGTH = 32
 
 
