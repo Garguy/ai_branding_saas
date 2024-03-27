@@ -1,10 +1,10 @@
 import argparse
+import os
 import re
 from typing import List
 
 from openai import OpenAI
 
-OPENAI_API_KEY = ""
 MAX_INPUT_LENGTH = 32
 
 
@@ -28,7 +28,7 @@ def validate_length(prompt: str) -> bool:
 
 def generate_branding_snippet(prompt: str) -> str:
     client = OpenAI(
-        api_key=OPENAI_API_KEY
+        api_key=os.environ.get("OPENAI_API_KEY")
     )
     enriched_branding_prompt = f"Generate upbeat branding snippet for {prompt}: "
     print(enriched_branding_prompt)
@@ -58,7 +58,7 @@ def generate_branding_snippet(prompt: str) -> str:
 
 def generate_keywords(prompt: str) -> List[str]:
     client = OpenAI(
-        api_key=OPENAI_API_KEY
+        api_key=os.environ.get("OPENAI_API_KEY")
     )
     enriched_keywords_prompt = f"Generate related branding keywords for {prompt}: "
     print(enriched_keywords_prompt)
