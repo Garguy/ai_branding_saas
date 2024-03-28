@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from copykitt import generate_branding_snippet, generate_keywords
+from brandforge import generate_branding_snippet, generate_keywords
 
 app = FastAPI()
 
