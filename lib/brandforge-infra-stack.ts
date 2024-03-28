@@ -6,20 +6,27 @@ export class BrandforgeInfraStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-//     const layer = new lambda.LayerVersion(this, "BaseLayer", {
-//       code: lambda.Code.fromAsset("lambda_base_layer/layer.zip"),
-//       compatibleRuntimes: [lambda.Runtime.PYTHON_3_9],
-//     });
+    const dockerFunc = new lambda.DockerImageFunction(this, "DockerFunc", {
+      code: lambda.DockerImageCode.fromImageAsset("./image"),
+      memorySize: 1024,
+      timeout: cdk.Duration.seconds(10),
+      architecture: lambda.Architecture.ARM_64,
+      environment: {
+        "OPENAI_API_KEY": "openApiKey",
+      }
+    });
 
-        const dockerFunc = new lambda.DockerImageFunction(this, "DockerFunc", {
-            code: lambda.DockerImageFunction.fromImageAsset("/")
-        })
+    const functionUrl = dockerFunc.addFunctionUrl({
+      authType: lambda.FunctionUrlAuthType.NONE,
+      cors: {
+        allowedMethods: [lambda.HttpMethod.ALL],
+        allowedHeaders: ["*"],
+        allowedOrigins: ["*"],
+      },
+    });
 
-    const apiLambda = new lambda.Function(this, "ApiFunction", {
-      runtime: lambda.Runtime.PYTHON_3_9,
-      code: lambda.Code.fromAsset("../app"),
-      handler: "brandforge_api.handler",
-      layers: [layer],
+    new cdk.CfnOutput(this, "FunctionUrlValue", {
+      value: functionUrl.url,
     });
   }
 }

@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from app.src.brandforge import generate_branding_snippet, generate_keywords
+from image.src.brandforge import generate_branding_snippet, generate_keywords
 from mangum import Mangum
 
 app = FastAPI()
@@ -35,4 +35,4 @@ def validate_input_length(prompt: str):
         raise HTTPException(status_code=400,
                             detail=f"Input length is too long. Must be under {MAX_INPUT_LENGTH} characters.")
 
-# uvicorn brandforge_api:app --reload
+# uvicorn brandforge_api:image --reload
