@@ -1,14 +1,34 @@
-# Welcome to your CDK TypeScript project
+# Demo on how to set up OpenAI
 
-This is a blank project for CDK development with TypeScript.
+This project utilizes:
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+| Type      | Tech                                                                     |
+| --------- | ------------------------------------------------------------------------ |
+| Language  | [Python](https://www.python.org/)                                        |
+| Framework | [FastAPI](https://fastapi.tiangolo.com/)                                 |
+| Hosting   | [AWS](https://aws.amazon.com/) (Lambda + API Gateway)                    |
+| Other     | [OpenAI](https://openai.com/), [AWS CDK](https://aws.amazon.com/cdk/), [Docker](https://www.docker.com/) |
 
-## Useful commands
+# To Run
+1. Clone the repository.
+2. Install FastAPI and OpenAI using pip. CDK/Docker is not required for testing.
+3. In the terminal, navigate to the `src` folder.
+4. Run `python brandforge.py -i "herbal tea"`.
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+You will see some output such as:
+```
+User input: herbal tea
+Generate upbeat branding snippet for herbal tea:
+Snippet: "Awaken your senses with our refreshing herbal teas! Sip on nature's goodness and feel energized and rejuvenated with every cup. Embrace the power...
+Generate related branding keywords for herbal tea:
+Result: ['natural', 'organic', 'relaxation', 'wellness', 'purify', 'herbal remedy', 'plant', 'based']
+```
+
+**Note:** A UI should be implemented to demonstrate the actual functionality.
+
+## Installation Commands
+
+```bash
+pip install fastapi
+pip install openai
+pip install uvicorn
