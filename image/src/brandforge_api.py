@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from brandforge import generate_branding_snippet, generate_keywords
+from app.src.brandforge import generate_branding_snippet, generate_keywords
 from mangum import Mangum
 
 app = FastAPI()
