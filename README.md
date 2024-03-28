@@ -12,7 +12,7 @@ This project utilizes:
 # To Run
 
 1. Clone the repository.
-2. Get and set your OpenAI API Key to local env. [OpenAIKey]{https://platform.openai.com/api-keys}
+2. Get and set your OpenAI API Key to local env. [OpenAIKey](https://platform.openai.com/api-keys)
 3. Install FastAPI and OpenAI using pip. CDK/Docker is not required for testing.
 4. In the terminal, navigate to the `src` folder.
 5. Run `python brandforge.py -i "herbal tea"`.
