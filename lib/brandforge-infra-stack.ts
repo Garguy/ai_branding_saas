@@ -1,6 +1,9 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import * as lambda from "aws-cdk-lib/aws-lambda";
+import * as dotevn from "dotenv";
+
+dotevn.config();
 
 export class BrandforgeInfraStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -12,8 +15,8 @@ export class BrandforgeInfraStack extends cdk.Stack {
       timeout: cdk.Duration.seconds(10),
       architecture: lambda.Architecture.ARM_64,
       environment: {
-        "OPENAI_API_KEY": "openApiKey",
-      }
+        OPENAI_API_KEY: process.env.OPENAI_API_KEY ?? "",
+      },
     });
 
     const functionUrl = dockerFunc.addFunctionUrl({
